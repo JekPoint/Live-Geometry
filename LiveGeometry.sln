@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveGeometry", "LiveGeometry\LiveGeometry.csproj", "{D2598C36-6A47-408B-89F2-3489C8C2EDA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB964930-6075-4A9C-B158-9A675691D0D0}
+	EndGlobalSection
+EndGlobal
