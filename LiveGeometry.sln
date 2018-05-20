@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveGeometry", "LiveGeometry\LiveGeometry.csproj", "{D2598C36-6A47-408B-89F2-3489C8C2EDA2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{3743A3A9-CFAB-4DC1-B548-E84251F09B22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicGeometry.2010", "LiveGeometry\External\DynamicGeometryLibrary\DynamicGeometry.2010.csproj", "{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2598C36-6A47-408B-89F2-3489C8C2EDA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C} = {3743A3A9-CFAB-4DC1-B548-E84251F09B22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB964930-6075-4A9C-B158-9A675691D0D0}

@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -33,9 +35,40 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resouces\Icons\DG.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Catel.Core, Version=4.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.Core.4.5.4\lib\net40\Catel.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Catel.MVVM, Version=4.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.MVVM.4.5.4\lib\net40\Catel.MVVM.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Catel.MVVM.4.5.4\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,6 +94,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Services\DrawingHostServices.cs" />
+    <Compile Include="Services\Interfaces\IDrawingHostServices.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,7 +121,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="Readme.txt" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,9 +130,101 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resouces\Icons\DG.ico" />
+    <Resource Include="Resouces\Icons\DG_16x16.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGArc.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGBisector.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGCircle.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGCircleByRadius.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGDLocus.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGIntersect.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGInvert.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGLine.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGLineParallel.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGLinePerpendicular.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGMeasureAngle.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGMeasureArea.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGMeasureDistance.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGMidPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGNew.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGOpen.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGPointer.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGPointOnFigure.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGPolygon.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGRay.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGRedo.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGSave.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGSegment.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGSimmPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGSimmPointByLine.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGToolDynamicLocus.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGToolPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGToolPolygon.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGUndo.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWArc.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWBisector.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWCircle.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWCircleByRadius.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWDLocus.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWIntersect.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWInvert.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWLine.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWLineParallel.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWLinePerpendicular.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWMeasureAngle.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWMeasureArea.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWMeasureDistance.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWMidPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWNew.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWOpen.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWPointer.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWPointOnFigure.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWPolygon.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWRay.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWRedo.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWSave.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWSegment.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWSimmPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWSimmPointByLine.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWToolDynamicLocus.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWToolPoint.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWToolPolygon.bmp" />
+    <Resource Include="Resouces\Bitmaps\Geometry Toolbar\DGWUndo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resouces\Bitmaps\Mainbar\Button.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Calc.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Calc16.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Help.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Label.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Macro.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\New.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Open.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Redo.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Save.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Settings.bmp" />
+    <Resource Include="Resouces\Bitmaps\Mainbar\Undo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="External\DynamicGeometryLibrary\DynamicGeometry.2010.csproj">
+      <Project>{C8694CE9-C8FC-4A2D-94FE-0FB9AC01D16C}</Project>
+      <Name>DynamicGeometry.2010</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

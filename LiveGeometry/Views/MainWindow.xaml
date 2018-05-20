@@ -1,17 +1,53 @@
-﻿<catel:Window x:Class="LiveGeometry.Views.MainWindow"
+﻿<windows:Window x:Class="LiveGeometry.Views.MainWindow"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-              xmlns:catel="http://schemas.catelproject.com"
-              ResizeMode="CanResize">
+              xmlns:windows="http://catel.codeplex.com"
+              ResizeMode="CanResize" Height="500" Width="800"
+              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+              CanCloseUsingEscape="False">
 
-     <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Title}" />
-        <Label Grid.Row="1" Grid.Column="0" Content="Here goes your real content" />
+        <DockPanel Grid.Row="0" Dock="Top" MinHeight="14">
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="_New" InputGestureText="Ctrl+N" Command="{Binding NewDocumentCommand}"/>
+                    <MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="{Binding OpenfileCommand}"/>
+                    <MenuItem Header="_Save" InputGestureText="Ctrl+S" Command="{Binding SaveContentCommand}"/>
+                    <MenuItem Header="Exit" Command="{Binding ExitApplicationCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Editor">
+                    <MenuItem Header="Undo" InputGestureText="Ctrl+Z" Command="{Binding UndoCommand}"/>
+                    <MenuItem Header="Redo" InputGestureText="Ctrl+Y" Command="{Binding RedoCommand}"/>
+                    <MenuItem Header="Cut" InputGestureText="Ctrl+X" IsEnabled="False"/>
+                    <MenuItem Header="Copy" InputGestureText="Ctrl+C" Command="{Binding CopyCommand}"/>
+                    <MenuItem Header="Paste" InputGestureText="Ctrl+V" Command="{Binding PasteCommand}"/>
+                    <MenuItem Header="Paste from ..." Command="{Binding PasteFromCommand}"/>
+                    <MenuItem Header="Delete" InputGestureText="Del" Command="{Binding DeleteSelectionCommand}"/>
+                    <MenuItem Header="Lock" Command="{Binding LockSelectedCommand}"/>
+                    <MenuItem Header="Select all" InputGestureText="Ctrl+A" Command="{Binding SelectAllCommand}"/>
+                    <MenuItem Header="Clear"/>
+                </MenuItem>
+                <MenuItem Header="View">
+                    <MenuItem Header="Figure List" Command="{Binding FigureListCommand}"/>
+                </MenuItem>
+            </Menu>
+         </DockPanel>
+        <ContentControl  Grid.Row="1" Content="{Binding DrawingHost}">
+            <i:Interaction.Behaviors>
+                <windows:KeyPressToCommand Command="{Binding UndoCommand}" Key="Z" Modifiers="Ctrl"/>
+                <windows:KeyPressToCommand Command="{Binding RedoCommand}" Key="Y" Modifiers="Ctrl"/>
+                <windows:KeyPressToCommand Command="{Binding SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
+                <windows:KeyPressToCommand Command="{Binding DeleteSelectionCommand}" Key="Delete"/>
+                <windows:KeyPressToCommand Command="{Binding RestartCommand}" Key="Escape"/>
+            </i:Interaction.Behaviors>
+        </ContentControl>
     </Grid>
-    
-</catel:Window>
+
+</windows:Window>
+
