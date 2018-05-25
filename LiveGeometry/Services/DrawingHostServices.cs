@@ -5,7 +5,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Catel.Data;
 using Catel.MVVM;
-using DynamicGeometry;
 using DynamicGeometry.Behaviors;
 using DynamicGeometry.Serialization;
 using DynamicGeometry.UI;

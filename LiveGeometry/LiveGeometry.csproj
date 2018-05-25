@@ -94,6 +94,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CommandContainers\Commands.cs" />
+    <Compile Include="CommandContainers\Editor\CopyCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\CutCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\DeleteCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\LockCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\PasteCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\PasteFromCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\RedoCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\SelectAllCommandContainer.cs" />
+    <Compile Include="CommandContainers\Editor\UndoCommandContainer.cs" />
+    <Compile Include="CommandContainers\File\NewProjectCommandContainer.cs" />
+    <Compile Include="CommandContainers\File\OpenProjectCommandContainer.cs" />
+    <Compile Include="CommandContainers\File\SaveProjectCommandContainer.cs" />
+    <Compile Include="CommandContainers\View\FigureListCommandContainer.cs" />
     <Compile Include="Services\DrawingHostServices.cs" />
     <Compile Include="Services\Interfaces\IDrawingHostServices.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

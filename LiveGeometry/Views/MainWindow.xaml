@@ -3,11 +3,9 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:windows="http://catel.codeplex.com"
               ResizeMode="CanResize" Height="500" Width="800"
-              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
               CanCloseUsingEscape="False">
 
     <Grid x:Name="LayoutRoot">
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -16,37 +14,28 @@
         <DockPanel Grid.Row="0" Dock="Top" MinHeight="14">
             <Menu>
                 <MenuItem Header="File">
-                    <MenuItem Header="_New" InputGestureText="Ctrl+N" Command="{Binding NewDocumentCommand}"/>
-                    <MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="{Binding OpenfileCommand}"/>
-                    <MenuItem Header="_Save" InputGestureText="Ctrl+S" Command="{Binding SaveContentCommand}"/>
-                    <MenuItem Header="Exit" Command="{Binding ExitApplicationCommand}"/>
+                    <MenuItem Header="_New" InputGestureText="Ctrl+N" Command="{windows:CommandManagerBinding NewProject}"/>
+                    <MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="{windows:CommandManagerBinding OpenProject}"/>
+                    <MenuItem Header="_Save" InputGestureText="Ctrl+S" Command="{windows:CommandManagerBinding SaveProject}"/>
+                    <MenuItem Header="Exit" InputGestureText="Alt+F4" Command="{Binding ExitApplicationCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Editor">
-                    <MenuItem Header="Undo" InputGestureText="Ctrl+Z" Command="{Binding UndoCommand}"/>
-                    <MenuItem Header="Redo" InputGestureText="Ctrl+Y" Command="{Binding RedoCommand}"/>
+                    <MenuItem Header="Undo" InputGestureText="Ctrl+Z" Command="{windows:CommandManagerBinding Undo}"/>
+                    <MenuItem Header="Redo" InputGestureText="Ctrl+Y" Command="{windows:CommandManagerBinding Redo}"/>
                     <MenuItem Header="Cut" InputGestureText="Ctrl+X" IsEnabled="False"/>
-                    <MenuItem Header="Copy" InputGestureText="Ctrl+C" Command="{Binding CopyCommand}"/>
-                    <MenuItem Header="Paste" InputGestureText="Ctrl+V" Command="{Binding PasteCommand}"/>
-                    <MenuItem Header="Paste from ..." Command="{Binding PasteFromCommand}"/>
-                    <MenuItem Header="Delete" InputGestureText="Del" Command="{Binding DeleteSelectionCommand}"/>
-                    <MenuItem Header="Lock" Command="{Binding LockSelectedCommand}"/>
-                    <MenuItem Header="Select all" InputGestureText="Ctrl+A" Command="{Binding SelectAllCommand}"/>
-                    <MenuItem Header="Clear"/>
+                    <MenuItem Header="Copy" InputGestureText="Ctrl+C" Command="{windows:CommandManagerBinding Copy}"/>
+                    <MenuItem Header="Paste" InputGestureText="Ctrl+V" Command="{windows:CommandManagerBinding Paste}"/>
+                    <MenuItem Header="Paste from ..." Command="{windows:CommandManagerBinding PasteFrom}"/>
+                    <MenuItem Header="Delete" InputGestureText="Del" Command="{windows:CommandManagerBinding Delete}"/>
+                    <MenuItem Header="Lock" Command="{windows:CommandManagerBinding Lock}"/>
+                    <MenuItem Header="Select all" InputGestureText="Ctrl+A" Command="{windows:CommandManagerBinding SelectAll}"/>
                 </MenuItem>
                 <MenuItem Header="View">
-                    <MenuItem Header="Figure List" Command="{Binding FigureListCommand}"/>
+                    <MenuItem Header="Figure List" InputGestureText="Shift+L" Command="{windows:CommandManagerBinding FigureList}"/>
                 </MenuItem>
             </Menu>
          </DockPanel>
-        <ContentControl  Grid.Row="1" Content="{Binding DrawingHost}">
-            <i:Interaction.Behaviors>
-                <windows:KeyPressToCommand Command="{Binding UndoCommand}" Key="Z" Modifiers="Ctrl"/>
-                <windows:KeyPressToCommand Command="{Binding RedoCommand}" Key="Y" Modifiers="Ctrl"/>
-                <windows:KeyPressToCommand Command="{Binding SelectAllCommand}" Key="A" Modifiers="Ctrl"/>
-                <windows:KeyPressToCommand Command="{Binding DeleteSelectionCommand}" Key="Delete"/>
-                <windows:KeyPressToCommand Command="{Binding RestartCommand}" Key="Escape"/>
-            </i:Interaction.Behaviors>
-        </ContentControl>
+        <ContentControl  Grid.Row="1" Content="{Binding DrawingHost}"/>
     </Grid>
 
 </windows:Window>
